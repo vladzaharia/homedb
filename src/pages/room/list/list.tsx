@@ -11,47 +11,46 @@ import { useNotificationAwareRequest } from '../../../hooks/notification'
 import Modal, { ConfirmModal } from '../../../components/modal/modal'
 import useReload from '../../../hooks/reload'
 import { TripEdit } from '../../../components/trip-edit/trip-edit'
-import { Device } from '../../../models/device'
+import { Room } from '../../../models/room'
 import { faBox } from '@awesome.me/kit-27cac3002e/icons/duotone/regular'
 
-export default function ListDevices() {
-	const devices = useLoaderData() as Device[]
-	useReload(devices)
+export default function ListRooms() {
+	const rooms = useLoaderData() as Room[]
+	useReload(rooms)
 	const navigate = useNavigate()
 	const auth = useAuth()
 	const request = useNotificationAwareRequest()
-	const [deleteModalDeviceId, setDeleteModalDeviceId] = useState<number | undefined>()
+	const [deleteModalRoomId, setDeleteModalRoomId] = useState<number | undefined>()
 	const [showCreateModal, setShowCreateModal] = useState<boolean>(false)
 
-	const deleteDevice = async (id: number) => {
+	const deleteRoom = async (id: number) => {
 		// await request(
-		// 	async () => await api.deleteDevice(id),
+		// 	async () => await api.deleteRoom(id),
 		// 	{
-		// 		message: `Device ${id} deleted successfully!`,
+		// 		message: `Room ${id} deleted successfully!`,
 		// 		source: 'trip',
 		// 		icon: faTrash,
 		// 	},
-		// 	() => setDeleteModalDeviceId(undefined),
-		// 	() => setDeleteModalDeviceId(undefined)
+		// 	() => setDeleteModalRoomId(undefined),
+		// 	() => setDeleteModalRoomId(undefined)
 		// )
 	}
 
 	return (
-		<div className="list device-list">
+		<div className="list room-list">
 			<Header
-				title="Devices"
-				color="purple"
+				title="Rooms"
+				color="green"
 				className="corner-right"
 				leftActions={<FontAwesomeIcon icon={faBox} size="lg" />}
-				rightActions={<Button color="purple" onClick={() => navigate(`/`)} iconProps={{ icon: faXmark }} />}
+				rightActions={<Button color="green" onClick={() => navigate(`/`)} iconProps={{ icon: faXmark }} />}
 			/>
 			<Table
-				color="purple"
+				color="green"
 				headers={[
-					{ element: 'Name' },
-					{ element: 'Product', className: 'no-mobile' },
-					{ element: 'Room', className: 'no-mobile' },
-					{ element: 'Floors', className: 'no-mobile' },
+					{ element: 'Room Name' },
+					{ element: 'Floors', className: 'table-cell-md no-mobile' },
+					{ element: 'Installed Devices', className: 'no-mobile' },
 					{
 						element: auth.isAuthenticated && false ? (
 							<div className="buttons">
@@ -60,21 +59,21 @@ export default function ListDevices() {
 						) : <></>,
 					},
 				]}
-				rows={devices.map((device) => {
+				rows={rooms.map((room) => {
 					return {
-						name: device.id.toString(),
+						name: room.id.toString(),
 						cells: [
 							{
-								element: <>
-									{device.Image.length > 0 ? <img src={device.Image[0].url} height={32} className='mr-1' /> : <></>} {device.Name}
-								</>
+								element: room.Name
 							},
 							{
-								element: device.Product[0]?.value || '',
+								element: room.Floors.map((floor) => floor.value).join(', '),
+								className: 'table-cell-md no-mobile',
+							},
+							{
+								element: room.Installations.length.toString(),
 								className: 'no-mobile',
 							},
-							{ element: device.Room[0]?.value || '' },
-							{ element: device.Floor[0]?.value || '' },
 							{
 								element: auth.isAuthenticated && false ? (
 									<div className="buttons">
@@ -83,25 +82,25 @@ export default function ListDevices() {
 											iconProps={{ icon: faTrash }}
 											onClick={(e) => {
 												e.stopPropagation()
-												setDeleteModalDeviceId(device.id)
+												setDeleteModalRoomId(room.id)
 											}}
 										/>
 									</div>
 								) : <></>,
 							},
 						],
-						// onClick: () => navigate(`/device/${device.id}`),
+						// onClick: () => navigate(`/room/${room.id}`),
 					}
 				})}
 			/>
 
 			<ConfirmModal
-				title={`Delete ${deleteModalDeviceId}?`}
+				title={`Delete ${deleteModalRoomId}?`}
 				icon={faTrash}
-				open={!!deleteModalDeviceId}
-				text={`Are you sure you want to delete ${deleteModalDeviceId}?`}
-				onConfirm={() => deleteDevice(deleteModalDeviceId!)}
-				onClose={() => setDeleteModalDeviceId(undefined)}
+				open={!!deleteModalRoomId}
+				text={`Are you sure you want to delete ${deleteModalRoomId}?`}
+				onConfirm={() => deleteRoom(deleteModalRoomId!)}
+				onClose={() => setDeleteModalRoomId(undefined)}
 			/>
 
 			<Modal className="create-modal" open={showCreateModal} onClose={() => setShowCreateModal(false)}>

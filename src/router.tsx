@@ -9,8 +9,10 @@ import ListProducts from './pages/product/list/list'
 import { AuthProvider, AuthProviderProps } from 'react-oidc-context'
 import ContentBoxMenu from './components/content-box-menu/content-box-menu'
 import ListDevices from './pages/device/list/list'
-import { ListDevicesLoader, ListProductsLoader } from './loaders/list'
-import { GetDeviceLoader, GetProductLoader } from './loaders/get'
+import { ListDevicesLoader, ListFloorsLoader, ListProductsLoader, ListRoomsLoader } from './loaders/list'
+import { GetDeviceLoader, GetFloorLoader, GetProductLoader, GetRoomLoader } from './loaders/get'
+import ListRooms from './pages/room/list/list'
+import ListFloors from './pages/floor/list/list'
 
 const init = async () => {
 	const oidcConfig: AuthProviderProps = {
@@ -63,6 +65,34 @@ const init = async () => {
 							path: ':product',
 							id: 'product',
 							loader: GetProductLoader,
+							element: <Fragment />,
+						},
+					],
+				},
+				{
+					path: '/room',
+					id: 'rooms',
+					loader: ListRoomsLoader,
+					element: <ListRooms />,
+					children: [
+						{
+							path: ':room',
+							id: 'room',
+							loader: GetRoomLoader,
+							element: <Fragment />,
+						},
+					],
+				},
+				{
+					path: '/floor',
+					id: 'floors',
+					loader: ListFloorsLoader,
+					element: <ListFloors />,
+					children: [
+						{
+							path: ':floor',
+							id: 'floor',
+							loader: GetFloorLoader,
 							element: <Fragment />,
 						},
 					],

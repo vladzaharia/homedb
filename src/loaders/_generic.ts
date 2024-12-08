@@ -10,9 +10,9 @@ import { getAxiosInstance } from "../api"
  * @param params Object including `device` to retrieve
  * @returns
  */
-export async function GenericGetLoader<T>(tableKey: TableKeys, { params }: { params: Params }) {
+export async function GenericGetLoader<T>(tableKey: TableKeys, param?: string) {
 	const api = getAxiosInstance()
-	return (await api.get<T>(`/rows/table/${TABLES[tableKey]}/${params.device}/?user_field_names=true}`)).data
+	return (await api.get<T>(`/rows/table/${TABLES[tableKey]}/${param}/?user_field_names=true}`)).data
 }
 
 /**
