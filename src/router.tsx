@@ -1,6 +1,6 @@
-import { StrictMode, Fragment } from 'react'
+import { StrictMode } from 'react'
 import * as ReactDOM from 'react-dom/client'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import App from './components/app/app'
 import ContentBox from './components/content-box/content-box'
 import './styles'
@@ -42,6 +42,12 @@ const init = async () => {
 			),
 			children: [
 				{
+					path: '/',
+					id: 'home',
+					loader: ListDevicesLoader,
+					element: <Navigate to="/device" replace />,
+				},
+				{
 					path: '/device',
 					id: 'devices',
 					loader: ListDevicesLoader,
@@ -51,7 +57,7 @@ const init = async () => {
 							path: ':device',
 							id: 'device',
 							loader: GetDeviceLoader,
-							element: <Fragment />,
+							element: <></>,
 						},
 					],
 				},
@@ -65,7 +71,7 @@ const init = async () => {
 							path: ':product',
 							id: 'product',
 							loader: GetProductLoader,
-							element: <Fragment />,
+							element: <></>,
 						},
 					],
 				},
@@ -79,7 +85,7 @@ const init = async () => {
 							path: ':room',
 							id: 'room',
 							loader: GetRoomLoader,
-							element: <Fragment />,
+							element: <></>,
 						},
 					],
 				},
@@ -93,7 +99,7 @@ const init = async () => {
 							path: ':floor',
 							id: 'floor',
 							loader: GetFloorLoader,
-							element: <Fragment />,
+							element: <></>,
 						},
 					],
 				},
