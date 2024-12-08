@@ -11,11 +11,15 @@ import {
 	faSpeaker,
 	faSquareRing,
 	faTv,
+	faToggleOn,
+	faBluetooth,
+	faQuestion,
+	faWifi
 } from '@awesome.me/kit-27cac3002e/icons/duotone/solid'
 import { Image, Relation, Row, Select } from './baserow'
 import { IconDefinition } from '@awesome.me/kit-27cac3002e/icons'
-import { faBluetooth, faQuestion, faWifi } from '@awesome.me/kit-27cac3002e/icons/classic/solid'
-import { faCyncSm, faMatter, faThread, faZigbee, faZWave } from '@awesome.me/kit-27cac3002e/icons/kit/custom'
+import { faCyncSm, faHomekit, faMatter, faThread, faZigbee, faZWave } from '@awesome.me/kit-27cac3002e/icons/kit/custom'
+import { faGoogle } from '@awesome.me/kit-27cac3002e/icons/classic/brands'
 
 export type Product = Row & {
 	Name: string
@@ -37,12 +41,12 @@ export const GetProductTypeIcon = (deviceType?: Select): IconDefinition => {
 		case 2799: // Light
 			return faLightbulb
 		case 2802: // Switch
-		case 2835: // Dimmer
 		case 2803: // Scene Controller
 			return faLightSwitch
 		case 2836: // Relay Switch
-			return faJar
-		case 2800: // Multisensor
+			return faToggleOn
+		case 2800: // Motion Sensor
+		case 2842: // Contact Sensor
 			return faSensor
 		case 2801: // Water Sensor
 			return faSensorOn
@@ -81,6 +85,10 @@ export const GetProductProtocolIcon = (protocol?: Select): IconDefinition => {
 			return faBluetooth
 		case 2811: // Cync
 			return faCyncSm
+		case 2843: // HomeKit
+			return faHomekit
+		case 2844: // Google Home
+			return faGoogle
 		default:
 			return faQuestion
 	}

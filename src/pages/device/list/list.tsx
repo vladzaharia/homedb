@@ -2,7 +2,7 @@ import { useLoaderData, useNavigate } from 'react-router-dom'
 import './list.css'
 import Header from '../../../components/header/header'
 import Button from '../../../components/button/button'
-import { faPlus, faTrash, faXmark, faGlobeAmericas, faPlug } from '@awesome.me/kit-27cac3002e/icons/classic/solid'
+import { faTrash, faXmark, faGlobeAmericas } from '@awesome.me/kit-27cac3002e/icons/classic/solid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Table from '../../../components/table/table'
 import { useState } from 'react'
@@ -53,16 +53,16 @@ export default function ListDevices() {
 					{ element: 'Product', className: 'no-mobile' },
 					{ element: 'Room', className: 'no-mobile' },
 					{ element: 'Floors', className: 'no-mobile' },
-					{
-						element:
-							auth.isAuthenticated && false ? (
-								<div className="buttons">
-									<Button color="green" iconProps={{ icon: faPlus }} onClick={() => setShowCreateModal(true)} />
-								</div>
-							) : (
-								<></>
-							),
-					},
+					// {
+					// 	element:
+					// 		auth.isAuthenticated && false ? (
+					// 			<div className="buttons">
+					// 				<Button color="green" iconProps={{ icon: faPlus }} onClick={() => setShowCreateModal(true)} />
+					// 			</div>
+					// 		) : (
+					// 			<></>
+					// 		),
+					// },
 				]}
 				rows={devices.map((device) => {
 					return {
@@ -90,23 +90,23 @@ export default function ListDevices() {
 								),
 							},
 							{ element: device.Floor[0]?.value || '' },
-							{
-								element:
-									auth.isAuthenticated && false ? (
-										<div className="buttons">
-											<Button
-												color="red"
-												iconProps={{ icon: faTrash }}
-												onClick={(e) => {
-													e.stopPropagation()
-													setDeleteModalDeviceId(device.id)
-												}}
-											/>
-										</div>
-									) : (
-										<></>
-									),
-							},
+							// {
+							// 	element:
+							// 		auth.isAuthenticated && false ? (
+							// 			<div className="buttons">
+							// 				<Button
+							// 					color="red"
+							// 					iconProps={{ icon: faTrash }}
+							// 					onClick={(e) => {
+							// 						e.stopPropagation()
+							// 						setDeleteModalDeviceId(device.id)
+							// 					}}
+							// 				/>
+							// 			</div>
+							// 		) : (
+							// 			<></>
+							// 		),
+							// },
 						],
 						// onClick: () => navigate(`/device/${device.id}`),
 					}

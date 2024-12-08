@@ -18,7 +18,7 @@ import {
 } from '@awesome.me/kit-27cac3002e/icons/duotone/solid'
 import { Relation, Row } from './baserow'
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { faToilet } from '@awesome.me/kit-27cac3002e/icons/classic/regular'
+import { faToiletPaper } from '@awesome.me/kit-27cac3002e/icons/duotone/regular'
 
 export type Room = Row & {
 	Name: string
@@ -55,7 +55,7 @@ export const GetRoomIcon = (id: number): IconDefinition => {
 			return faUtensils
 		case 9: // Half Bathroom
 		case 22: // Toilet Room
-			return faToilet
+			return faToiletPaper
 		case 11: // Laundry Closet
 			return faWasher
 		case 15: // Closet

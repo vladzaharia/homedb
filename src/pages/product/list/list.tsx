@@ -49,19 +49,19 @@ export default function ListProducts() {
 				color="blue"
 				headers={[
 					{ element: 'Product Name' },
-					{ element: 'Type', className: 'no-mobile' },
+					{ element: 'Type', className: 'no-mobile table-cell-md' },
 					{ element: 'Manufacturer', className: 'no-mobile' },
 					{ element: 'Protocols', className: 'no-mobile' },
-					{
-						element:
-							auth.isAuthenticated && false ? (
-								<div className="buttons">
-									<Button color="green" iconProps={{ icon: faPlus }} onClick={() => setShowCreateModal(true)} />
-								</div>
-							) : (
-								<></>
-							),
-					},
+					// {
+					// 	element:
+					// 		auth.isAuthenticated && false ? (
+					// 			<div className="buttons">
+					// 				<Button color="green" iconProps={{ icon: faPlus }} onClick={() => setShowCreateModal(true)} />
+					// 			</div>
+					// 		) : (
+					// 			<></>
+					// 		),
+					// },
 				]}
 				rows={products.map((product) => {
 					return {
@@ -70,7 +70,14 @@ export default function ListProducts() {
 							{
 								element: (
 									<>
-										{product.Image.length > 0 ? <img src={product.Image[0].url} height={32} className="mr-1" /> : <></>} {product.Name}
+										{product.Image.length > 0 ? (
+											<div style={{ height: '2rem', width: '2rem', textAlign: 'center' }} className="mr-1">
+												<img src={product.Image[0].url} style={{ maxWidth: '2rem', maxHeight: '2rem' }} />
+											</div>
+										) : (
+											<></>
+										)}{' '}
+										{product.Name}
 									</>
 								),
 							},
@@ -80,7 +87,7 @@ export default function ListProducts() {
 										<FontAwesomeIcon className="mr-05" icon={GetProductTypeIcon(product.Type)} /> {product.Type?.value}
 									</span>
 								),
-								className: 'no-mobile',
+								className: 'no-mobile table-cell-md',
 							},
 							{ element: product.Manufacturer?.value || '' },
 							{
@@ -92,23 +99,23 @@ export default function ListProducts() {
 									</>
 								),
 							},
-							{
-								element:
-									auth.isAuthenticated && false ? (
-										<div className="buttons">
-											<Button
-												color="red"
-												iconProps={{ icon: faTrash }}
-												onClick={(e) => {
-													e.stopPropagation()
-													setDeleteModalProductId(product.id)
-												}}
-											/>
-										</div>
-									) : (
-										<></>
-									),
-							},
+							// {
+							// 	element:
+							// 		auth.isAuthenticated && false ? (
+							// 			<div className="buttons">
+							// 				<Button
+							// 					color="red"
+							// 					iconProps={{ icon: faTrash }}
+							// 					onClick={(e) => {
+							// 						e.stopPropagation()
+							// 						setDeleteModalProductId(product.id)
+							// 					}}
+							// 				/>
+							// 			</div>
+							// 		) : (
+							// 			<></>
+							// 		),
+							// },
 						],
 						// onClick: () => navigate(`/product/${product.id}`),
 					}

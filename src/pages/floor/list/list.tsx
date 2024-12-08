@@ -50,16 +50,16 @@ export default function ListFloors() {
 				headers={[
 					{ element: 'Floor Name' },
 					{ element: 'Rooms', className: 'no-mobile' },
-					{
-						element:
-							auth.isAuthenticated && false ? (
-								<div className="buttons">
-									<Button color="green" iconProps={{ icon: faPlus }} onClick={() => setShowCreateModal(true)} />
-								</div>
-							) : (
-								<></>
-							),
-					},
+					// {
+					// 	element:
+					// 		auth.isAuthenticated && false ? (
+					// 			<div className="buttons">
+					// 				<Button color="green" iconProps={{ icon: faPlus }} onClick={() => setShowCreateModal(true)} />
+					// 			</div>
+					// 		) : (
+					// 			<></>
+					// 		),
+					// },
 				]}
 				rows={floors.map((floor) => {
 					return {
@@ -72,23 +72,23 @@ export default function ListFloors() {
 								element: floor.Rooms.length.toString(),
 								className: 'no-mobile',
 							},
-							{
-								element:
-									auth.isAuthenticated && false ? (
-										<div className="buttons">
-											<Button
-												color="red"
-												iconProps={{ icon: faTrash }}
-												onClick={(e) => {
-													e.stopPropagation()
-													setDeleteModalFloorId(floor.id)
-												}}
-											/>
-										</div>
-									) : (
-										<></>
-									),
-							},
+							// {
+							// 	element:
+							// 		auth.isAuthenticated && false ? (
+							// 			<div className="buttons">
+							// 				<Button
+							// 					color="red"
+							// 					iconProps={{ icon: faTrash }}
+							// 					onClick={(e) => {
+							// 						e.stopPropagation()
+							// 						setDeleteModalFloorId(floor.id)
+							// 					}}
+							// 				/>
+							// 			</div>
+							// 		) : (
+							// 			<></>
+							// 		),
+							// },
 						],
 						// onClick: () => navigate(`/floor/${floor.id}`),
 					}

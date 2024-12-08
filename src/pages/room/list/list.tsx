@@ -51,16 +51,16 @@ export default function ListRooms() {
 					{ element: 'Room Name' },
 					{ element: 'Floors', className: 'table-cell-md no-mobile' },
 					{ element: 'Installed Devices', className: 'no-mobile' },
-					{
-						element:
-							auth.isAuthenticated && false ? (
-								<div className="buttons">
-									<Button color="green" iconProps={{ icon: faPlus }} onClick={() => setShowCreateModal(true)} />
-								</div>
-							) : (
-								<></>
-							),
-					},
+					// {
+					// 	element:
+					// 		auth.isAuthenticated && false ? (
+					// 			<div className="buttons">
+					// 				<Button color="green" iconProps={{ icon: faPlus }} onClick={() => setShowCreateModal(true)} />
+					// 			</div>
+					// 		) : (
+					// 			<></>
+					// 		),
+					// },
 				]}
 				rows={rooms.map((room) => {
 					return {
@@ -82,23 +82,23 @@ export default function ListRooms() {
 								element: room.Installations.length.toString(),
 								className: 'no-mobile',
 							},
-							{
-								element:
-									auth.isAuthenticated && false ? (
-										<div className="buttons">
-											<Button
-												color="red"
-												iconProps={{ icon: faTrash }}
-												onClick={(e) => {
-													e.stopPropagation()
-													setDeleteModalRoomId(room.id)
-												}}
-											/>
-										</div>
-									) : (
-										<></>
-									),
-							},
+							// {
+							// 	element:
+							// 		auth.isAuthenticated && false ? (
+							// 			<div className="buttons">
+							// 				<Button
+							// 					color="red"
+							// 					iconProps={{ icon: faTrash }}
+							// 					onClick={(e) => {
+							// 						e.stopPropagation()
+							// 						setDeleteModalRoomId(room.id)
+							// 					}}
+							// 				/>
+							// 			</div>
+							// 		) : (
+							// 			<></>
+							// 		),
+							// },
 						],
 						// onClick: () => navigate(`/room/${room.id}`),
 					}

@@ -1,11 +1,15 @@
-.table {
+.table-container {
 	width: 100%;
-	max-width: 95%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	display: flex;
+}
+
+.table {
 	display: flex;
 	flex-direction: column;
 	border: 0.0625rem solid var(--border);
 	border-radius: 0.5rem;
-	overflow-y: overlay;
 	flex: 1 0 auto;
 	margin: 1rem;
 }
