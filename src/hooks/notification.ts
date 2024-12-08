@@ -1,7 +1,7 @@
-import { IconDefinition } from '@fortawesome/pro-regular-svg-icons'
+import { IconDefinition } from '@awesome.me/kit-27cac3002e/icons/classic/regular'
 import { createContext, useContext } from 'react'
 import { isAxiosError } from 'axios'
-import { faCheck } from '@fortawesome/pro-solid-svg-icons'
+import { faCheck } from '@awesome.me/kit-27cac3002e/icons/classic/solid'
 import { useRevalidator } from 'react-router-dom'
 
 export type NotificationSource = 'trip' | 'db-reset' | 'db-migrate' | 'db-rollback' | 'waypoint'

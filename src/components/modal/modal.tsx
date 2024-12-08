@@ -4,9 +4,10 @@ import Button from '../button/button'
 import { ContainerContext } from '../../hooks/container'
 import { useContext, useState } from 'react'
 import Header from '../header/header'
-import { IconDefinition, faCheck, faPlus, faXmark } from '@fortawesome/pro-solid-svg-icons'
+import { faCheck, faPlus, faXmark } from '@awesome.me/kit-27cac3002e/icons/classic/solid'
 import Action from '../action/action'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconDefinition } from '@awesome.me/kit-27cac3002e/icons'
 
 export default function Modal({ className, children, ...props }: Omit<ModalProps, 'container'>) {
 	const container = useContext(ContainerContext)

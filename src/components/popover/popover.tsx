@@ -1,10 +1,10 @@
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Popover as MUIPopover, PopoverProps as MUIPopoverProps } from '@mui/material'
 import './popover.css'
 import { useContext } from 'react'
 import { ContainerContext } from '../../hooks/container'
 import { CommonColor } from '../../types'
+import { IconDefinition } from '@awesome.me/kit-27cac3002e/icons'
 
 export interface PopoverContentProps {
 	title?: string

@@ -6,7 +6,7 @@ import {
 	faCheck,
 	faSquareQuestion,
 	faGlobeAmericas,
-} from '@fortawesome/pro-solid-svg-icons'
+} from '@awesome.me/kit-27cac3002e/icons/classic/solid'
 import { ButtonGroup, MenuItem, Select } from '@mui/material'
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
 import moment from 'moment'

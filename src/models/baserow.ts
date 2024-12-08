@@ -1,3 +1,17 @@
+export const TABLES = {
+	"Floor": 244,
+	"Room": 272,
+	"Product": 601,
+	"Device": 602
+}
+
+export type TableKeys = keyof typeof TABLES
+
+export type Row = {
+	id: number,
+	order: number
+}
+
 export type Select = {
 	id: number,
 	value: string,
@@ -34,4 +48,11 @@ type Thumbnail = {
 export type Relation = {
 	id: number,
 	value: string
+}
+
+export type ApiListResult<T> = {
+	count: number,
+	next: string,
+	previous: string,
+	results: T[]
 }

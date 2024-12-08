@@ -6,9 +6,10 @@ import './content-box.css'
 
 export interface ContentBoxProps {
 	children?: ReactNode
+	className?: string
 }
 
-export default function ContentBox({ children }: ContentBoxProps) {
+export default function ContentBox({ children, className }: ContentBoxProps) {
 	const [notification, setNotification] = useState<NotificationDetails | undefined>(undefined)
 	const [showNotification, setShowNotification] = useState<boolean>(false)
 
@@ -32,7 +33,7 @@ export default function ContentBox({ children }: ContentBoxProps) {
 				setShowNotification,
 			}}
 		>
-			<div className="content-box">{children ? children : <Outlet />}</div>
+			<div className={`${className || ''} content-box`}>{children ? children : <Outlet />}</div>
 			<Notification />
 		</NotificationContext.Provider>
 	)

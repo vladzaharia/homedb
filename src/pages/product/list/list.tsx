@@ -11,47 +11,47 @@ import { useNotificationAwareRequest } from '../../../hooks/notification'
 import Modal, { ConfirmModal } from '../../../components/modal/modal'
 import useReload from '../../../hooks/reload'
 import { TripEdit } from '../../../components/trip-edit/trip-edit'
-import { Device } from '../../../models/device'
+import { Product, GetProductTypeIcon } from '../../../models/product'
 import { faBox } from '@awesome.me/kit-27cac3002e/icons/duotone/regular'
 
-export default function ListDevices() {
-	const devices = useLoaderData() as Device[]
-	useReload(devices)
+export default function ListProducts() {
+	const products = useLoaderData() as Product[]
+	useReload(products)
 	const navigate = useNavigate()
 	const auth = useAuth()
 	const request = useNotificationAwareRequest()
-	const [deleteModalDeviceId, setDeleteModalDeviceId] = useState<number | undefined>()
+	const [deleteModalProductId, setDeleteModalProductId] = useState<number | undefined>()
 	const [showCreateModal, setShowCreateModal] = useState<boolean>(false)
 
-	const deleteDevice = async (id: number) => {
+	const deleteProduct = async (id: number) => {
 		// await request(
-		// 	async () => await api.deleteDevice(id),
+		// 	async () => await api.deleteProduct(id),
 		// 	{
-		// 		message: `Device ${id} deleted successfully!`,
+		// 		message: `Product ${id} deleted successfully!`,
 		// 		source: 'trip',
 		// 		icon: faTrash,
 		// 	},
-		// 	() => setDeleteModalDeviceId(undefined),
-		// 	() => setDeleteModalDeviceId(undefined)
+		// 	() => setDeleteModalProductId(undefined),
+		// 	() => setDeleteModalProductId(undefined)
 		// )
 	}
 
 	return (
-		<div className="list device-list">
+		<div className="list product-list">
 			<Header
-				title="Devices"
-				color="purple"
+				title="Products"
+				color="blue"
 				className="corner-right"
 				leftActions={<FontAwesomeIcon icon={faBox} size="lg" />}
-				rightActions={<Button color="purple" onClick={() => navigate(`/`)} iconProps={{ icon: faXmark }} />}
+				rightActions={<Button color="blue" onClick={() => navigate(`/`)} iconProps={{ icon: faXmark }} />}
 			/>
 			<Table
-				color="purple"
+				color="blue"
 				headers={[
-					{ element: 'Name' },
-					{ element: 'Product', className: 'no-mobile' },
-					{ element: 'Room', className: 'no-mobile' },
-					{ element: 'Floor', className: 'no-mobile' },
+					{ element: 'Product Name' },
+					{ element: 'Type', className: 'no-mobile' },
+					{ element: 'Manufacturer', className: 'no-mobile' },
+					{ element: 'Protocols', className: 'no-mobile' },
 					{
 						element: auth.isAuthenticated && false ? (
 							<div className="buttons">
@@ -60,21 +60,25 @@ export default function ListDevices() {
 						) : <></>,
 					},
 				]}
-				rows={devices.map((device) => {
+				rows={products.map((product) => {
 					return {
-						name: device.id.toString(),
+						name: product.id.toString(),
 						cells: [
 							{
 								element: <>
-									{device.Image.length > 0 ? <img src={device.Image[0].url} height={32} className='mr-1' /> : <></>} {device.Name}
+									{product.Image.length > 0 ? <img src={product.Image[0].url} height={32} className='mr-1' /> : <></>} {product.Name}
 								</>
 							},
 							{
-								element: device.Product[0]?.value || '',
+								element: (
+									<span>
+										<FontAwesomeIcon className="mr-05" icon={GetProductTypeIcon(product.Type)} /> {product.Type?.value}
+									</span>
+								),
 								className: 'no-mobile',
 							},
-							{ element: device.Room[0]?.value || '' },
-							{ element: device.Floor[0]?.value || '' },
+							{ element: product.Manufacturer?.value || '' },
+							{ element: product['Protocols'].map((p) => p?.value).join(', ') },
 							{
 								element: auth.isAuthenticated && false ? (
 									<div className="buttons">
@@ -83,25 +87,25 @@ export default function ListDevices() {
 											iconProps={{ icon: faTrash }}
 											onClick={(e) => {
 												e.stopPropagation()
-												setDeleteModalDeviceId(device.id)
+												setDeleteModalProductId(product.id)
 											}}
 										/>
 									</div>
 								) : <></>,
 							},
 						],
-						// onClick: () => navigate(`/device/${device.id}`),
+						// onClick: () => navigate(`/product/${product.id}`),
 					}
 				})}
 			/>
 
 			<ConfirmModal
-				title={`Delete ${deleteModalDeviceId}?`}
+				title={`Delete ${deleteModalProductId}?`}
 				icon={faTrash}
-				open={!!deleteModalDeviceId}
-				text={`Are you sure you want to delete ${deleteModalDeviceId}?`}
-				onConfirm={() => deleteDevice(deleteModalDeviceId!)}
-				onClose={() => setDeleteModalDeviceId(undefined)}
+				open={!!deleteModalProductId}
+				text={`Are you sure you want to delete ${deleteModalProductId}?`}
+				onConfirm={() => deleteProduct(deleteModalProductId!)}
+				onClose={() => setDeleteModalProductId(undefined)}
 			/>
 
 			<Modal className="create-modal" open={showCreateModal} onClose={() => setShowCreateModal(false)}>

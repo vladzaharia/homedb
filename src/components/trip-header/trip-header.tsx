@@ -1,4 +1,4 @@
-import { faRight } from '@fortawesome/pro-solid-svg-icons'
+import { faRight } from '@awesome.me/kit-27cac3002e/icons/classic/solid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import moment, { Moment } from 'moment'
 import { BasicTrip, Trip } from 'tracker-server-client'

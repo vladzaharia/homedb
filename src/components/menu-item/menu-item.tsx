@@ -1,8 +1,8 @@
-import { IconDefinition } from '@fortawesome/pro-regular-svg-icons'
 import { useNavigate } from 'react-router-dom'
 import Button, { ButtonProps } from '../button/button'
 import './menu-item.css'
 import { CommonColor } from '../../types'
+import { IconDefinition } from '@awesome.me/kit-27cac3002e/icons'
 
 interface MenuItemProps extends ButtonProps {
 	icon: IconDefinition
@@ -25,6 +25,7 @@ export function MenuItem({ color, text, icon, className, destination, ...buttonP
 				color={color}
 				iconProps={{
 					icon: icon,
+					size: "lg"
 				}}
 				{...buttonProps}
 			/>

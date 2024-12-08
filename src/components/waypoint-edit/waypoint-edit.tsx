@@ -1,4 +1,4 @@
-import { faChevronLeft, faCheck, IconName, faCircle, faMapMarkerAlt, faPlus } from '@fortawesome/pro-solid-svg-icons'
+import { faChevronLeft, faCheck, IconName, faCircle, faMapMarkerAlt, faPlus } from '@awesome.me/kit-27cac3002e/icons/classic/solid'
 import moment from 'moment'
 import Action from '../action/action'
 import Header from '../header/header'

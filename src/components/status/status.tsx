@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconDefinition } from '@fortawesome/pro-regular-svg-icons'
+import { IconDefinition } from '@awesome.me/kit-27cac3002e/icons/classic/regular'
 import isMobile from 'is-mobile'
 import { useRef, useState } from 'react'
 import Popover from '../popover/popover'

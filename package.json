@@ -35,16 +35,15 @@
 		"prettier": "^2.6.2",
 		"typescript": "~5.2.2",
 		"vite": "^6.0.3",
-    "vitest": "^2.1.6",
 		"vite-plugin-webfont-dl": "^3.10.3",
-		"vite-tsconfig-paths": "^5.1.4"
+		"vite-tsconfig-paths": "^5.1.4",
+		"vitest": "^2.1.6"
 	},
 	"dependencies": {
+		"@awesome.me/kit-27cac3002e": "^1.0.13",
 		"@emotion/react": "^11.11.1",
 		"@emotion/styled": "^11.11.0",
-		"@fortawesome/fontawesome-svg-core": "^6.4.0",
-		"@fortawesome/pro-regular-svg-icons": "^6.4.0",
-		"@fortawesome/pro-solid-svg-icons": "^6.4.0",
+		"@fortawesome/fontawesome-svg-core": "^6.7.1",
 		"@fortawesome/react-fontawesome": "^0.2.0",
 		"@mui/material": "^5.13.6",
 		"@mui/x-date-pickers": "^6.11.2",

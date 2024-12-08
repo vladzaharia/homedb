@@ -1,4 +1,4 @@
-import { IconDefinition } from '@fortawesome/pro-solid-svg-icons'
+import { IconDefinition } from '@awesome.me/kit-27cac3002e/icons/classic/solid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useRouteLoaderData } from 'react-router-dom'
 import { Trip, TripStatusActivityEnum } from 'tracker-server-client'

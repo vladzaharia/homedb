@@ -1,4 +1,4 @@
-import { faGauge, faLocationArrow } from '@fortawesome/pro-solid-svg-icons'
+import { faGauge, faLocationArrow } from '@awesome.me/kit-27cac3002e/icons/classic/solid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import moment from 'moment-timezone'
 import { Trip } from 'tracker-server-client'

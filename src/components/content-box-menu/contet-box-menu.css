@@ -1,0 +1,44 @@
+.flex-row {
+	flex-direction: row !important;
+}
+
+.content-box-menu {
+	height: 100%;
+	border-left: 0.0625rem solid var(--border);
+	flex: 1 1 auto;
+
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: stretch;
+	overflow-y: overlay;
+}
+
+.content-box-menu .login {
+	display: flex;
+	align-self: center;
+	align-items: center;
+	height: 100%;
+}
+
+.content-box-menu .list {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 1 1 auto;
+}
+
+@media only screen and (max-width: 50rem) {
+	.content-box-menu {
+		border-left: none;
+		border-top: 0.0625rem solid var(--border);
+		margin-left: 0;
+		width: 100%;
+	}
+
+	.content-box-menu .list {
+		gap: 0;
+		padding-bottom: 0;
+	}
+}

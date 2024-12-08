@@ -13,7 +13,7 @@ import {
 	faUp,
 	faUpLeft,
 	faUpRight,
-} from '@fortawesome/pro-solid-svg-icons'
+} from '@awesome.me/kit-27cac3002e/icons/classic/solid'
 import moment from 'moment-timezone'
 import { TripStatusActivityEnum, TripType } from 'tracker-server-client'
 

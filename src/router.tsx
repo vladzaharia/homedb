@@ -5,11 +5,12 @@ import App from './components/app/app'
 import ContentBox from './components/content-box/content-box'
 import './styles'
 import { RouterErrorBoundary } from './pages/error/error'
-import ListDevicesLoader from './loaders/device-list'
-import GetDeviceLoader from './loaders/device-get'
-import ListDevices from './pages/device/list/list'
-// import { Device } from './pages/device/device'
+import ListProducts from './pages/product/list/list'
 import { AuthProvider, AuthProviderProps } from 'react-oidc-context'
+import ContentBoxMenu from './components/content-box-menu/content-box-menu'
+import ListDevices from './pages/device/list/list'
+import { ListDevicesLoader, ListProductsLoader } from './loaders/list'
+import { GetDeviceLoader, GetProductLoader } from './loaders/get'
 
 const init = async () => {
 	const oidcConfig: AuthProviderProps = {
@@ -26,7 +27,7 @@ const init = async () => {
 		{
 			element: (
 				<App>
-					<ContentBox />
+					<ContentBoxMenu />
 				</App>
 			),
 			id: 'root',
@@ -48,6 +49,20 @@ const init = async () => {
 							path: ':device',
 							id: 'device',
 							loader: GetDeviceLoader,
+							element: <Fragment />,
+						},
+					],
+				},
+				{
+					path: '/product',
+					id: 'proucts',
+					loader: ListProductsLoader,
+					element: <ListProducts />,
+					children: [
+						{
+							path: ':product',
+							id: 'product',
+							loader: GetProductLoader,
 							element: <Fragment />,
 						},
 					],

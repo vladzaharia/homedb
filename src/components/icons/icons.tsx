@@ -1,6 +1,5 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
-	IconDefinition,
 	faAnchor,
 	faBath,
 	faBed,
@@ -94,7 +93,8 @@ import {
 	faWater,
 	faWaterLadder,
 	faWhale,
-} from '@fortawesome/pro-solid-svg-icons'
+} from '@awesome.me/kit-27cac3002e/icons/classic/solid'
+import { IconDefinition } from '@awesome.me/kit-27cac3002e/icons'
 
 export const AVAILABLE_ICONS: IconDefinition[] = [
 	faMapMarkerAlt,

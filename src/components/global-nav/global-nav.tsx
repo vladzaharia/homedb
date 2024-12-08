@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import './global-nav.css'
 import Button from '../button/button'
-import { faRightFromBracket, faRightToBracket, faHome, faCog, faSun, faMoon } from '@fortawesome/pro-solid-svg-icons'
+import { faRightFromBracket, faRightToBracket, faHome, faCog, faSun, faMoon } from '@awesome.me/kit-27cac3002e/icons/classic/solid'
 import { OpenIDScopeProps, CommonColor } from '../../types'
 import { useAuth } from 'react-oidc-context'
 import { useContext } from 'react'

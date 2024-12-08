@@ -1,8 +1,8 @@
 import { Snackbar } from '@mui/material'
 import './notification.css'
-import { faXmark } from '@fortawesome/pro-regular-svg-icons'
+import { faXmark } from '@awesome.me/kit-27cac3002e/icons/classic/regular'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSquareCheck, faSquareExclamation, faTriangleExclamation } from '@fortawesome/pro-solid-svg-icons'
+import { faSquareCheck, faSquareExclamation, faTriangleExclamation } from '@awesome.me/kit-27cac3002e/icons/classic/solid'
 import { NotificationContext } from '../../hooks/notification'
 import { useContext } from 'react'
 
