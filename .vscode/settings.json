@@ -1,0 +1,15 @@
+{
+	"rest-client.environmentVariables": {
+		"$shared": {
+		},
+		"local": {
+			"host": "http://localhost:8787/api",
+		},
+		"staging": {
+			"host": "https://staging.homedb.polaris.rest/api",
+		},
+		"prod": {
+			"host": "https://homedb.polaris.rest/api",
+		}
+	},
+}

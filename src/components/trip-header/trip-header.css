@@ -1,0 +1,128 @@
+.trip-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: stretch;
+	flex-wrap: wrap;
+	border-bottom: 0.0625rem solid var(--border);
+	padding: 1.5rem;
+}
+
+.trip-header h1 {
+	display: flex;
+	align-items: center;
+	margin: 0;
+}
+
+.trip-header.clickable {
+	cursor: pointer;
+	background-color: var(--blue-trans);
+	color: var(--blue);
+}
+
+.trip-header.clickable:hover {
+	cursor: pointer;
+	background-color: var(--blue-trans-50);
+	color: var(--blue-dark);
+}
+
+.trip-header.clickable.past {
+	cursor: pointer;
+	background-color: var(--orange-trans);
+	color: var(--orange);
+}
+
+.trip-header.clickable.past:hover {
+	cursor: pointer;
+	background-color: var(--orange-trans-50);
+	color: var(--orange-dark);
+}
+
+.trip-header.clickable.current {
+	cursor: pointer;
+	background-color: var(--green-trans);
+	color: var(--green);
+}
+
+.trip-header.clickable.current:hover {
+	cursor: pointer;
+	background-color: var(--green-trans-50);
+	color: var(--green-dark);
+}
+
+.date-duration {
+	align-self: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	gap: 1rem;
+}
+
+.date-duration > span {
+	color: var(--primary);
+}
+
+.date-duration .date {
+	height: 2.875rem;
+	padding: 0 2rem;
+	text-align: center;
+	border-radius: 0.5rem;
+	background-color: var(--blue-trans);
+	color: var(--blue);
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	align-items: center;
+	justify-content: center;
+}
+
+.trip-header.current .icon {
+	color: var(--green);
+}
+
+.trip-header.current .date {
+	background-color: var(--green-trans-50);
+	color: var(--green);
+}
+
+.trip-header.past .icon {
+	color: var(--orange);
+}
+
+.trip-header.past .date {
+	background-color: var(--orange-trans-50);
+	color: var(--orange);
+	font-size: large;
+}
+
+.trip-header.upcoming .date,
+.trip-header.current .date {
+	font-size: larger;
+	font-weight: 600;
+}
+
+.date-duration .icon {
+	font-size: x-large;
+}
+
+.trip-header.past.clickable .icon {
+	color: var(--orange);
+}
+
+.trip-header.current.clickable .icon {
+	color: var(--green);
+}
+
+@media only screen and (max-width: 50rem) {
+	.trip-header {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	.trip-header > *:last-child {
+		padding: 0;
+	}
+}

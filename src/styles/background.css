@@ -1,0 +1,9 @@
+body {
+	background-image: url('/background/tracker-dark.svg');
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+body:not(:has(.app.dark)) {
+	background-image: url('/background/tracker-light.svg');
+}

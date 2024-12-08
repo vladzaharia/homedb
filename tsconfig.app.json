@@ -1,0 +1,22 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"outDir": "dist/out-tsc",
+		"types": ["node", "vite/client"]
+	},
+	"exclude": [
+		"src/**/*.spec.ts",
+		"src/**/*.test.ts",
+		"src/**/*.cy.ts",
+		"src/**/*.spec.tsx",
+		"src/**/*.test.tsx",
+		"src/**/*.cy.tsx",
+		"src/**/*.spec.js",
+		"src/**/*.test.js",
+		"src/**/*.cy.js",
+		"src/**/*.spec.jsx",
+		"src/**/*.test.jsx",
+		"src/**/*.cy.jsx"
+	],
+	"include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+}
