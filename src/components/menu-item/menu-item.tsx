@@ -25,7 +25,7 @@ export function MenuItem({ color, text, icon, className, destination, ...buttonP
 				color={color}
 				iconProps={{
 					icon: icon,
-					size: "lg"
+					size: 'lg',
 				}}
 				{...buttonProps}
 			/>

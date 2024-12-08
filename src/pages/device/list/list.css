@@ -33,10 +33,10 @@
 	height: 100%;
 }
 
-.list.device-list>.header-wrapper {
+.list.device-list > .header-wrapper {
 	flex-grow: 0;
 }
 
-.list.device-list>:not(.header-wrapper) {
+.list.device-list > :not(.header-wrapper) {
 	flex-grow: 1;
 }

@@ -44,7 +44,7 @@ export function useNotificationAwareRequest() {
 		request: () => Promise<T>,
 		notificationDetails?: Omit<NotificationDetails, 'notificationType'>,
 		onSuccess?: (response: T) => void,
-		onCatch?: () => void
+		onCatch?: () => void,
 	) => {
 		try {
 			const response = await await request()

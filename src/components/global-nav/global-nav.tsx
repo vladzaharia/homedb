@@ -35,7 +35,7 @@ export default function GlobalNav() {
 											Signed in as <span className="fw-500">{auth.user?.profile.name}</span>
 										</span>
 									),
-							  }
+								}
 							: undefined
 					}
 				/>

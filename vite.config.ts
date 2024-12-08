@@ -21,15 +21,11 @@ export default defineConfig({
 		host: 'localhost',
 	},
 
-	plugins: [
-		react(),
-		viteTsConfigPaths(),
-		webfontDownload(),
-	],
+	plugins: [react(), viteTsConfigPaths(), webfontDownload()],
 
 	define: {
-    'process.env': process.env
-  }
+		'process.env': process.env,
+	},
 
 	// test: {
 	// 	globals: true,

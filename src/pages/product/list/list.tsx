@@ -11,7 +11,7 @@ import { useNotificationAwareRequest } from '../../../hooks/notification'
 import Modal, { ConfirmModal } from '../../../components/modal/modal'
 import useReload from '../../../hooks/reload'
 import { TripEdit } from '../../../components/trip-edit/trip-edit'
-import { Product, GetProductTypeIcon } from '../../../models/product'
+import { Product, GetProductTypeIcon, GetProductProtocolIcon } from '../../../models/product'
 import { faBox } from '@awesome.me/kit-27cac3002e/icons/duotone/regular'
 
 export default function ListProducts() {
@@ -53,11 +53,14 @@ export default function ListProducts() {
 					{ element: 'Manufacturer', className: 'no-mobile' },
 					{ element: 'Protocols', className: 'no-mobile' },
 					{
-						element: auth.isAuthenticated && false ? (
-							<div className="buttons">
-								<Button color="green" iconProps={{ icon: faPlus }} onClick={() => setShowCreateModal(true)} />
-							</div>
-						) : <></>,
+						element:
+							auth.isAuthenticated && false ? (
+								<div className="buttons">
+									<Button color="green" iconProps={{ icon: faPlus }} onClick={() => setShowCreateModal(true)} />
+								</div>
+							) : (
+								<></>
+							),
 					},
 				]}
 				rows={products.map((product) => {
@@ -65,9 +68,11 @@ export default function ListProducts() {
 						name: product.id.toString(),
 						cells: [
 							{
-								element: <>
-									{product.Image.length > 0 ? <img src={product.Image[0].url} height={32} className='mr-1' /> : <></>} {product.Name}
-								</>
+								element: (
+									<>
+										{product.Image.length > 0 ? <img src={product.Image[0].url} height={32} className="mr-1" /> : <></>} {product.Name}
+									</>
+								),
 							},
 							{
 								element: (
@@ -78,20 +83,31 @@ export default function ListProducts() {
 								className: 'no-mobile',
 							},
 							{ element: product.Manufacturer?.value || '' },
-							{ element: product['Protocols'].map((p) => p?.value).join(', ') },
 							{
-								element: auth.isAuthenticated && false ? (
-									<div className="buttons">
-										<Button
-											color="red"
-											iconProps={{ icon: faTrash }}
-											onClick={(e) => {
-												e.stopPropagation()
-												setDeleteModalProductId(product.id)
-											}}
-										/>
-									</div>
-								) : <></>,
+								element: (
+									<>
+										{product['Protocols'].map((p) => (
+											<FontAwesomeIcon className="mr-05 ml-05" title={p?.value} icon={GetProductProtocolIcon(p)} />
+										))}
+									</>
+								),
+							},
+							{
+								element:
+									auth.isAuthenticated && false ? (
+										<div className="buttons">
+											<Button
+												color="red"
+												iconProps={{ icon: faTrash }}
+												onClick={(e) => {
+													e.stopPropagation()
+													setDeleteModalProductId(product.id)
+												}}
+											/>
+										</div>
+									) : (
+										<></>
+									),
 							},
 						],
 						// onClick: () => navigate(`/product/${product.id}`),

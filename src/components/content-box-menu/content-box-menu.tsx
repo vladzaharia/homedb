@@ -21,7 +21,7 @@ export default function ContentBoxMenu() {
 	}, [auth.isAuthenticated, auth.activeNavigator, auth.isLoading, auth.signinRedirect])
 
 	return (
-		<ContentBox className='flex-row'>
+		<ContentBox className="flex-row">
 			<Menu
 				headerProps={{
 					title: 'Smart Home',

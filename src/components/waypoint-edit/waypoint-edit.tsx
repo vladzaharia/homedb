@@ -52,7 +52,7 @@ export const WaypointEdit = ({ inModal, onModalClose }: { inModal?: boolean; onM
 				icon: faMapMarkerAlt,
 				message: 'Successfully created waypoint!',
 			},
-			() => onModalClose && onModalClose()
+			() => onModalClose && onModalClose(),
 		)
 	}
 
@@ -71,7 +71,7 @@ export const WaypointEdit = ({ inModal, onModalClose }: { inModal?: boolean; onM
 				icon: faMapMarkerAlt,
 				message: 'Successfully updated waypoint!',
 			},
-			() => navigate('/admin/waypoint')
+			() => navigate('/admin/waypoint'),
 		)
 	}
 

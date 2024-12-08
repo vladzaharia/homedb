@@ -113,7 +113,7 @@ const init = async () => {
 			<AuthProvider {...oidcConfig}>
 				<RouterProvider router={router} />
 			</AuthProvider>
-		</StrictMode>
+		</StrictMode>,
 	)
 }
 

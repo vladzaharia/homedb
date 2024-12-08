@@ -11,7 +11,7 @@ import { useNotificationAwareRequest } from '../../../hooks/notification'
 import Modal, { ConfirmModal } from '../../../components/modal/modal'
 import useReload from '../../../hooks/reload'
 import { TripEdit } from '../../../components/trip-edit/trip-edit'
-import { Room } from '../../../models/room'
+import { GetRoomIcon, Room } from '../../../models/room'
 import { faBox } from '@awesome.me/kit-27cac3002e/icons/duotone/regular'
 
 export default function ListRooms() {
@@ -52,11 +52,14 @@ export default function ListRooms() {
 					{ element: 'Floors', className: 'table-cell-md no-mobile' },
 					{ element: 'Installed Devices', className: 'no-mobile' },
 					{
-						element: auth.isAuthenticated && false ? (
-							<div className="buttons">
-								<Button color="green" iconProps={{ icon: faPlus }} onClick={() => setShowCreateModal(true)} />
-							</div>
-						) : <></>,
+						element:
+							auth.isAuthenticated && false ? (
+								<div className="buttons">
+									<Button color="green" iconProps={{ icon: faPlus }} onClick={() => setShowCreateModal(true)} />
+								</div>
+							) : (
+								<></>
+							),
 					},
 				]}
 				rows={rooms.map((room) => {
@@ -64,7 +67,12 @@ export default function ListRooms() {
 						name: room.id.toString(),
 						cells: [
 							{
-								element: room.Name
+								element: (
+									<>
+										<FontAwesomeIcon className="mr-05" icon={GetRoomIcon(room.id)} />
+										{room.Name}
+									</>
+								),
 							},
 							{
 								element: room.Floors.map((floor) => floor.value).join(', '),
@@ -75,18 +83,21 @@ export default function ListRooms() {
 								className: 'no-mobile',
 							},
 							{
-								element: auth.isAuthenticated && false ? (
-									<div className="buttons">
-										<Button
-											color="red"
-											iconProps={{ icon: faTrash }}
-											onClick={(e) => {
-												e.stopPropagation()
-												setDeleteModalRoomId(room.id)
-											}}
-										/>
-									</div>
-								) : <></>,
+								element:
+									auth.isAuthenticated && false ? (
+										<div className="buttons">
+											<Button
+												color="red"
+												iconProps={{ icon: faTrash }}
+												onClick={(e) => {
+													e.stopPropagation()
+													setDeleteModalRoomId(room.id)
+												}}
+											/>
+										</div>
+									) : (
+										<></>
+									),
 							},
 						],
 						// onClick: () => navigate(`/room/${room.id}`),

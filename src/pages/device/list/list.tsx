@@ -13,6 +13,7 @@ import useReload from '../../../hooks/reload'
 import { TripEdit } from '../../../components/trip-edit/trip-edit'
 import { Device } from '../../../models/device'
 import { faBox } from '@awesome.me/kit-27cac3002e/icons/duotone/regular'
+import { GetRoomIcon } from 'src/models/room'
 
 export default function ListDevices() {
 	const devices = useLoaderData() as Device[]
@@ -53,11 +54,14 @@ export default function ListDevices() {
 					{ element: 'Room', className: 'no-mobile' },
 					{ element: 'Floors', className: 'no-mobile' },
 					{
-						element: auth.isAuthenticated && false ? (
-							<div className="buttons">
-								<Button color="green" iconProps={{ icon: faPlus }} onClick={() => setShowCreateModal(true)} />
-							</div>
-						) : <></>,
+						element:
+							auth.isAuthenticated && false ? (
+								<div className="buttons">
+									<Button color="green" iconProps={{ icon: faPlus }} onClick={() => setShowCreateModal(true)} />
+								</div>
+							) : (
+								<></>
+							),
 					},
 				]}
 				rows={devices.map((device) => {
@@ -65,29 +69,43 @@ export default function ListDevices() {
 						name: device.id.toString(),
 						cells: [
 							{
-								element: <>
-									{device.Image.length > 0 ? <img src={device.Image[0].url} height={32} className='mr-1' /> : <></>} {device.Name}
-								</>
+								element: (
+									<>
+										{device.Image.length > 0 ? <img src={device.Image[0].url} height={32} className="mr-1" /> : <></>} {device.Name}
+									</>
+								),
 							},
 							{
 								element: device.Product[0]?.value || '',
 								className: 'no-mobile',
 							},
-							{ element: device.Room[0]?.value || '' },
+							{
+								element: device.Room[0] ? (
+									<>
+										<FontAwesomeIcon className="mr-05" icon={GetRoomIcon(device.Room[0]?.id)} />
+										{device.Room[0]?.value}
+									</>
+								) : (
+									''
+								),
+							},
 							{ element: device.Floor[0]?.value || '' },
 							{
-								element: auth.isAuthenticated && false ? (
-									<div className="buttons">
-										<Button
-											color="red"
-											iconProps={{ icon: faTrash }}
-											onClick={(e) => {
-												e.stopPropagation()
-												setDeleteModalDeviceId(device.id)
-											}}
-										/>
-									</div>
-								) : <></>,
+								element:
+									auth.isAuthenticated && false ? (
+										<div className="buttons">
+											<Button
+												color="red"
+												iconProps={{ icon: faTrash }}
+												onClick={(e) => {
+													e.stopPropagation()
+													setDeleteModalDeviceId(device.id)
+												}}
+											/>
+										</div>
+									) : (
+										<></>
+									),
 							},
 						],
 						// onClick: () => navigate(`/device/${device.id}`),

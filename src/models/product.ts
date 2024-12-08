@@ -1,20 +1,33 @@
-import { faBell, faCamera, faJar, faLightbulb, faLightSwitch, faOutlet, faPlug, faSensor, faSensorOn, faSpeaker, faSquareRing, faTv } from "@awesome.me/kit-27cac3002e/icons/classic/regular"
-import { Image, Relation, Row, Select } from "./baserow"
-import { IconDefinition } from "@awesome.me/kit-27cac3002e/icons"
-import { faBluetooth, faQuestion, faWifi } from "@awesome.me/kit-27cac3002e/icons/classic/solid"
-import { faCyncSm, faMatter, faThread, faZigbee, faZWave } from "@awesome.me/kit-27cac3002e/icons/kit/custom"
+import {
+	faBell,
+	faCameraSecurity,
+	faJar,
+	faLightbulb,
+	faLightSwitch,
+	faOutlet,
+	faPlug,
+	faSensor,
+	faSensorOn,
+	faSpeaker,
+	faSquareRing,
+	faTv,
+} from '@awesome.me/kit-27cac3002e/icons/duotone/solid'
+import { Image, Relation, Row, Select } from './baserow'
+import { IconDefinition } from '@awesome.me/kit-27cac3002e/icons'
+import { faBluetooth, faQuestion, faWifi } from '@awesome.me/kit-27cac3002e/icons/classic/solid'
+import { faCyncSm, faMatter, faThread, faZigbee, faZWave } from '@awesome.me/kit-27cac3002e/icons/kit/custom'
 
 export type Product = Row & {
-	"Name": string,
-	"Type"?: Select,
-	"Protocols": Select[],
-	"Manufacturer": Select,
-	"Image": Image[],
-	"Pairing Instructions": string | null,
-	"Reset Instructions": string | null,
-	"Restart Instructions": string | null,
-	"Notes": string,
-	"Installations": Relation[],
+	Name: string
+	Type?: Select
+	Protocols: Select[]
+	Manufacturer: Select
+	Image: Image[]
+	'Pairing Instructions': string | null
+	'Reset Instructions': string | null
+	'Restart Instructions': string | null
+	Notes: string
+	Installations: Relation[]
 }
 
 export const GetProductTypeIcon = (deviceType?: Select): IconDefinition => {
@@ -36,7 +49,7 @@ export const GetProductTypeIcon = (deviceType?: Select): IconDefinition => {
 		case 2804: // Button
 			return faSquareRing
 		case 2823: // Camera
-			return faCamera
+			return faCameraSecurity
 		case 2822: // Doorbell
 			return faBell
 		case 2826: // TV
@@ -72,5 +85,3 @@ export const GetProductProtocolIcon = (protocol?: Select): IconDefinition => {
 			return faQuestion
 	}
 }
-
-

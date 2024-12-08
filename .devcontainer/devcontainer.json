@@ -81,7 +81,7 @@
 				"[markdown]": {
 					"editor.defaultFormatter": "esbenp.prettier-vscode"
 				},
-			    "files.associations": {
+				"files.associations": {
 					"*.swagger": "yaml"
 				}
 			}

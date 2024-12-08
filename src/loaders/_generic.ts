@@ -1,6 +1,6 @@
-import { Params } from "react-router-dom"
-import { ApiListResult, TableKeys, TABLES } from "../models/baserow"
-import { getAxiosInstance } from "../api"
+import { Params } from 'react-router-dom'
+import { ApiListResult, TableKeys, TABLES } from '../models/baserow'
+import { getAxiosInstance } from '../api'
 
 /**
  * Generic loader to get a single row of a table
