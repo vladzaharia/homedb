@@ -23,9 +23,7 @@ export default defineConfig({
 
 	plugins: [
 		react(),
-		viteTsConfigPaths({
-			root: '../',
-		}),
+		viteTsConfigPaths(),
 		webfontDownload(),
 	],
 
